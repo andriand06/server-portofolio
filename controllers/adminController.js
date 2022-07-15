@@ -30,18 +30,23 @@ module.exports = {
         req.flash("alertMessage", `User ${username} tidak ada!`);
         req.flash("alertStatus", "danger");
         res.redirect("/admin/signin");
-      }
-      const isPasswordMatch = await bcrypt.compare(password, user.password);
-      if (!isPasswordMatch) {
-        req.flash("alertMessage", `Password yang anda masukkan tidak sesuai!`);
-        req.flash("alertStatus", "danger");
-        res.redirect("/admin/signin");
+      } else {
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+          req.flash(
+            "alertMessage",
+            `Password yang anda masukkan tidak sesuai!`
+          );
+          req.flash("alertStatus", "danger");
+          res.redirect("/admin/signin");
+        } else {
+          req.session.user = {
+            id: user.id,
+            username: user.username,
+          };
+        }
       }
 
-      req.session.user = {
-        id: user.id,
-        username: user.username,
-      };
       res.redirect("/admin/dashboard");
     } catch (error) {
       console.log(error);

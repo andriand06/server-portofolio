@@ -9,7 +9,9 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/portofolio");
+mongoose.connect(
+  "mongodb+srv://andriandavinta:Ian640001@mycluster.frcve.mongodb.net/portofolio?retryWrites=true&w=majority"
+);
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const adminRouter = require("./routes/admin");
