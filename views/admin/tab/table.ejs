@@ -1,0 +1,77 @@
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <button
+      type="button"
+      class="btn btn-primary btn-circle"
+      data-toggle="modal"
+      data-target="#addModal"
+    >
+      <i class="fas fa-plus"></i>
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Label</th>
+            <th>Title</th>
+            <th>Link</th>
+            <th>Company</th>
+            <th>Period</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tfoot>
+          <tr>
+            <th>No</th>
+            <th>Label</th>
+            <th>Title</th>
+            <th>Link</th>
+            <th>Company</th>
+            <th>Period</th>
+            <th>Action</th>
+          </tr>
+        </tfoot>
+        <tbody>
+          <% tab.forEach((res, line) => { %>
+          <tr>
+            <td><%= line+1 %></td>
+            <td><%= res.label %></td>
+            <td><%= res.title %></td>
+            <td><%= res.link %></td>
+            <td><%= res.company %></td>
+            <td><%= res.period %></td>
+            <td>
+              <a
+                href="javascript:void()"
+                class="btn btn-warning btn-sm btn-circle button-update"
+                data-id="<%= res.id %>"
+                data-label="<%= res.label %>"
+                data-title="<%= res.title %>"
+                data-link="<%= res.link %>"
+                data-company="<%= res.company %>"
+                data-period="<%= res.period %>"
+                ><i class="fas fa-edit"></i
+              ></a>
+              <a
+                href="javascript:void()"
+                class="btn btn-danger btn-sm btn-circle button-delete"
+                data-id="<%= res.id %>"
+                ><i class="fas fa-trash"></i
+              ></a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

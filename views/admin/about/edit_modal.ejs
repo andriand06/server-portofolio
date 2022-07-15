@@ -1,0 +1,67 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="editModal"
+  tabindex="-1"
+  aria-labelledby="editModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Update About</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="/admin/about?_method=PUT" method="POST">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control description"
+              id="description"
+              name="description"
+              placeholder="Enter Description"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="company" class="form-label">Company</label>
+            <input
+              type="text"
+              class="form-control company"
+              id="company"
+              name="company"
+              placeholder="Enter Company"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="url" class="form-label">Url</label>
+            <input
+              type="text"
+              class="form-control url"
+              id="url"
+              name="url"
+              placeholder="Enter Url"
+            />
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <input type="hidden" name="id" class="id" />
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
