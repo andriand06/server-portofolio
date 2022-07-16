@@ -35,11 +35,19 @@ module.exports = {
   },
   work: async (req, res) => {
     try {
-      const project = await Project.find().populate({
+      let { limit } = req.query;
+      if (!limit) limit = 2;
+      let hasMore = false;
+      let projectLength = (await Project.find()).length;
+      const project = await Project.find().limit(limit).populate({
         path: "toolId",
         select: "name",
       });
-      res.status(200).json(project);
+      if (projectLength > project.length) hasMore = true;
+      res.status(200).json({
+        project,
+        hasMore,
+      });
     } catch (error) {
       res.status(404).json({
         error: "Error",
