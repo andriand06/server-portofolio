@@ -39,7 +39,7 @@ module.exports = {
       if (!limit) limit = 2;
       let hasMore = false;
       let projectLength = (await Project.find()).length;
-      const project = await Project.find().limit(limit).populate({
+      const project = await Project.find().populate({
         path: "toolId",
         select: "name",
       });
