@@ -12,7 +12,7 @@ module.exports = {
       });
       res.status(200).json({
         details: about,
-        techList: tech[0],
+        techList: tech,
       });
     } catch (error) {
       res.status(404).json({
