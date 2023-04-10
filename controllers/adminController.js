@@ -1,3 +1,4 @@
+const Hero = require("../models/Hero");
 const About = require("../models/About");
 const Tech = require("../models/Tech");
 const List = require("../models/List");
@@ -65,6 +66,66 @@ module.exports = {
         alert,
       });
     } catch (error) {}
+  },
+  viewHero: async (req, res) => {
+    try {
+      const hero = await Hero.find();
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+      const alert = { message: alertMessage, status: alertStatus };
+      res.render("admin/hero/view_hero", {
+        hero,
+        alert,
+      });
+    } catch (error) {
+      res.redirect("/admin/hero");
+    }
+  },
+  addHero: async (req, res) => {
+    try {
+      const { jobTitle, description, companyName, companyLink } = req.body;
+      await Hero.create({ jobTitle, description, companyName, companyLink });
+      req.flash("alertMessage", `Successfully add new Hero!`);
+      req.flash("alertStatus", `success`);
+      res.redirect("/admin/hero");
+    } catch (error) {
+      req.flash("alertMessage", error.message);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/hero");
+    }
+  },
+  updateHero: async (req, res) => {
+    try {
+      const { id, jobTitle, description, companyName, companyLink } = req.body;
+      const hero = await Hero.findOne({ _id: id });
+      hero.jobTitle = jobTitle;
+      hero.description = description;
+      hero.companyName = companyName;
+      hero.companyLink = companyLink;
+      await hero.save();
+      req.flash("alertMessage", `Successfully Update Hero with ${id}`);
+      req.flash("alertStatus", "success");
+      res.redirect("/admin/hero");
+    } catch (error) {
+      req.flash("alertMessage", error.message);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/hero");
+    }
+  },
+  deleteHero: async (req, res) => {
+    try {
+      const { id } = req.body;
+      Hero.deleteOne({ _id: id }, (err, res) => {
+        err ? console.log(err) : console.log(res);
+      });
+      req.flash("alertMessage", `Successfully delete Hero with ${id}!`);
+      req.flash("alertStatus", "success");
+      res.redirect("/admin/hero");
+    } catch (error) {
+      req.flash("alertMessage", error.message);
+      req.flash("alertStatus", "danger");
+      res.redirect("/admin/hero");
+    }
   },
   viewAbout: async (req, res) => {
     try {

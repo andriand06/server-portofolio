@@ -1,8 +1,19 @@
+const Hero = require("../models/Hero");
 const About = require("../models/About");
 const Tech = require("../models/Tech");
 const Tab = require("../models/Tab");
 const Project = require("../models/Project");
 module.exports = {
+  hero: async (req, res) => {
+    try {
+      const hero = await Hero.find();
+      res.status(200).json(hero);
+    } catch (error) {
+      res.status(404).json({
+        error: "Error",
+      });
+    }
+  },
   about: async (req, res) => {
     try {
       const about = await About.find();

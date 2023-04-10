@@ -1,0 +1,76 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="addModal"
+  tabindex="-1"
+  aria-labelledby="addModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addModalLabel">Add Hero</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <form action="/admin/hero" method="POST">
+        <div class="modal-body">
+          <div class="mb-3">
+            <label for="jobTitle" class="form-label">Job Title</label>
+            <input
+              type="text"
+              class="form-control"
+              id="jobTitle"
+              name="jobTitle"
+              placeholder="Enter Job Title"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              id="description"
+              name="description"
+              placeholder="Enter Description"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="companyname" class="form-label">Company Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="companyname"
+              name="companyname"
+              placeholder="Enter Company Name"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="companylink" class="form-label">Company Link</label>
+            <input
+              type="text"
+              class="form-control"
+              id="companylink"
+              name="companylink"
+              placeholder="Enter Company Link"
+            />
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="submit" class="btn btn-primary">Add</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
