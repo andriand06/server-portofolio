@@ -15,7 +15,7 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">About Page</h1>
+          <h1 class="h3 mb-4 text-gray-800">Hero Page</h1>
           <%- include('../../partials/message.ejs') %> <%- include('table.ejs')
           %>
         </div>
@@ -42,10 +42,10 @@
 <script>
   $("#dataTable").on("click", ".button-update", function () {
     let id = $(this).data("id");
-    let jobTitle = $(this).data("jobTitle");
+    let jobTitle = $(this).data("jobtitle");
     let description = $(this).data("description");
-    let companyName = $(this).data("companyName");
-    let companyLink = $(this).data("companyLink");
+    let companyName = $(this).data("companyname");
+    let companyLink = $(this).data("companylink");
     $("#editModal").modal("show");
     $(".id").val(id);
     $(".jobtitle").val(jobTitle);

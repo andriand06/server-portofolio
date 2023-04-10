@@ -21,36 +21,40 @@
         <thead>
           <tr>
             <th>No</th>
+            <th>Job Title</th>
             <th>Description</th>
-            <th>Company</th>
-            <th>Url</th>
+            <th>Company Name</th>
+            <th>Company Link</th>
             <th>Action</th>
           </tr>
         </thead>
         <tfoot>
           <tr>
             <th>No</th>
+            <th>Job Title</th>
             <th>Description</th>
-            <th>Company</th>
-            <th>Url</th>
+            <th>Company Name</th>
+            <th>Company Link</th>
             <th>Action</th>
           </tr>
         </tfoot>
         <tbody>
-          <% about.forEach((res, line) => { %>
+          <% hero.forEach((res, line) => { %>
           <tr>
             <td><%= line+1 %></td>
+            <td><%= res.jobTitle %></td>
             <td><%= res.description %></td>
-            <td><%= res.company %></td>
-            <td><%= res.url %></td>
+            <td><%= res.companyName %></td>
+            <td><%= res.companyLink %></td>
             <td>
               <a
                 href="javascript:void()"
                 class="btn btn-warning btn-sm btn-circle button-update"
                 data-id="<%= res.id %>"
+                data-jobtitle="<%= res.jobtitle %>"
                 data-description="<%= res.description %>"
-                data-company="<%= res.company %>"
-                data-url="<%= res.url %>"
+                data-companyname="<%= res.companyname %>"
+                data-companylink="<%= res.companylink %>"
                 ><i class="fas fa-edit"></i
               ></a>
               <a
