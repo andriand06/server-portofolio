@@ -8,7 +8,7 @@ const methodOverride = require("method-override");
 const flash = require("connect-flash");
 const session = require("express-session");
 const mongoose = require("mongoose");
-const serverless = require("serverless-http");
+
 mongoose.connect(
   "mongodb+srv://andriandavinta:Ian640001@mycluster.frcve.mongodb.net/portofolio?retryWrites=true&w=majority"
 );
@@ -47,8 +47,6 @@ app.use((req, res, next) => {
   res.header("Access-Control-Allow-Headers", "*");
   next();
 });
-
-app.use("/server", app.router());
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/admin", adminRouter);
@@ -71,4 +69,3 @@ app.use(function (err, req, res, next) {
 });
 
 module.exports = app;
-module.exports.handler = serverless(app);
